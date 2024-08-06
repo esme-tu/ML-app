@@ -36,7 +36,7 @@ with st.sidebar:
         'Yüzgeç Uzunluğu (mm)': flipper_length_mm,
         'Ağırlık (g)': body_mass_g,
         'Cinsiyet': gender}
-  input_df= pd.DataFrame(data, index[0])
-  input_penguins=pd.concat([input_df, X], axis=0)
+  input_df = pd.DataFrame(data, index=[0])
+  input_penguins = pd.concat([input_df, X_raw], axis=0)
 
-input_penguins
+input_df
