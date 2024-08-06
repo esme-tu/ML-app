@@ -3,32 +3,7 @@ import pandas as pd
 import numpy as np
 from sklearn.ensemble import RandomForestClassifier
 
-# Kullanıcı adı ve şifre doğrulama
-def check_password():
-    def password_entered():
-        if (st.session_state["username"] == st.secrets["login"]["username"] and 
-                st.session_state["password"] == st.secrets["login"]["password"]):
-            st.session_state["password_correct"] = True
-            del st.session_state["password"]  # Parolayı bellekten kaldırın
-        else:
-            st.session_state["password_correct"] = False
-
-    if "password_correct" not in st.session_state:
-        st.text_input("Kullanıcı Adı", key="username")
-        st.text_input("Parola", type="password", key="password")
-        st.button("Giriş", on_click=password_entered)
-        return False
-    elif not st.session_state["password_correct"]:
-        st.text_input("Kullanıcı Adı", key="username")
-        st.text_input("Parola", type="password", key="password")
-        st.error("Kullanıcı adı veya parola yanlış")
-        st.button("Giriş", on_click=password_entered)
-        return False
-    else:
-        return True
-
-if check_password():
-    st.title('🧠 ML-App')
+st.title('🧠 ML-App')
     st.info('Bu uygulama makine öğrenmesi için yapılan bir uygulamadır 😊')
 
     with st.expander('Data'):
@@ -139,3 +114,7 @@ if check_password():
 
     penguins_species = np.array(['Adelie', 'Chinstrap', 'Gentoo'])
     st.success(str(penguins_species[prediction][0]))
+
+
+
+    
