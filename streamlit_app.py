@@ -9,14 +9,14 @@ st.info('Bu uygulama makine öğrenmesi için yapılan bir uygulamadır 😊')
 with st.expander('Data'):
     st.write('++Raw Data')
     df = pd.read_csv('https://raw.githubusercontent.com/dataprofessor/data/master/penguins_cleaned.csv')
-    st.write(df)
+    df
     st.write('**X**')
     X_raw = df.drop('species', axis=1)
-    st.write(X_raw)
+    X_raw
 
     st.write('**Y**')
     y_raw = df.species
-    st.write(y_raw)
+    y_raw
 
 with st.expander('Data Görselleştirme'):
     st.scatter_chart(data=df, x="bill_length_mm", y="body_mass_g", color='species')
@@ -45,17 +45,17 @@ with st.sidebar:
 
 with st.expander('Özellik Girişi'):
     st.write('***Özellik Girişi***')
-    st.write(input_df)
+    input_df
     st.write('**Birleştirilmiş penguen verileri**')
-    st.write(input_penguins)
+    input_penguins
 
 # Data preparation
 # Encode X
 encode = ['island', 'sex']
 df_penguins = pd.get_dummies(input_penguins, prefix=encode)
 
-X = df_penguins.iloc[1:]
-input_row = df_penguins.iloc[1:]
+X = df_penguins[1:]
+input_row = df_penguins[1:]
 
 # Encode y
 target_mapper = {'Adelie': 0, 'Chinstrap': 1, 'Gentoo': 2}
@@ -71,4 +71,11 @@ with st.expander('Veri Hazırlama'):
     st.write('**Encoded y**')
     y
 
+#model eğitimi
+clf= RandomForestClassifier()
+clf.fit(X,y)
 
+prediction=clf.predict(input_row)
+prediction_proba=clf.predict_proba(input_row)
+
+prediction_proba
