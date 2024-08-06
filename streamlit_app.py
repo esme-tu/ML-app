@@ -54,33 +54,21 @@ with st.expander('Özellik Girişi'):
 encode = ['island', 'sex']
 df_penguins = pd.get_dummies(input_penguins, prefix=encode)
 
-X = df_penguins.iloc[1:, :]
-input_row = df_penguins.iloc[:1, :]
+X = df_penguins.iloc[1:]
+input_row = df_penguins.iloc[1:]
 
 # Encode y
 target_mapper = {'Adelie': 0, 'Chinstrap': 1, 'Gentoo': 2}
-y = y_raw.apply(lambda val: target_mapper[val])
+
+def target_encode(val):
+    return target_mapper[val]
+    
+y = y_raw.apply(target_encode)
 
 with st.expander('Veri Hazırlama'):
     st.write('**Encoded X (input penguin)**')
-    st.write(input_row)
+    input_row
     st.write('**Encoded y**')
-    st.write(y)
+    y
 
-# Model training and inference
-## Train the ML model
-clf = RandomForestClassifier()
-clf.fit(X, y)
 
-## Apply model to make predictions
-prediction = clf.predict(input_row)
-prediction_proba = clf.predict_proba(input_row)
-
-df_prediction_proba = pd.DataFrame(prediction_proba, columns=['Adelie', 'Chinstrap', 'Gentoo'])
-
-# Display predicted species
-st.subheader('Predicted Species')
-st.dataframe(df_prediction_proba.style.format({'Adelie': '{:.2%}', 'Chinstrap': '{:.2%}', 'Gentoo': '{:.2%}'}))
-
-penguins_species = np.array(['Adelie', 'Chinstrap', 'Gentoo'])
-st.success(f'Tahmin edilen tür: {penguins_species[prediction][0]}')
