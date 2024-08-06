@@ -9,12 +9,12 @@ with st.expander('Data'):
   df=pd.read_csv('https://raw.githubusercontent.com/dataprofessor/data/master/penguins_cleaned.csv')
   df
   st.write('**X**')
-  X= df.drop('species', axis=1)
-  X
+  X_raw= df.drop('species', axis=1)
+  X_raw
 
   st.write('**Y**')
-  Y= df.species
-  Y
+  Y_raw= df.species
+  Y_raw
 #"bill_length_mm","bill_depth_mm","flipper_length_mm","body_mass_g"
 with st.expander('Data Görselleştirme'):
   st.scatter_chart(data=df,x="bill_length_mm", y="body_mass_g", color='species')
@@ -37,7 +37,7 @@ with st.sidebar:
         'Ağırlık (g)': body_mass_g,
         'Cinsiyet': gender}
   input_df = pd.DataFrame(data, index=[0])
-  input_penguins = pd.concat([input_df, X], axis=0)
+  input_penguins = pd.concat([input_df, X_raw], axis=0)
 
 with st.expander('Özellik Girişi'):
   st.write('***Özellik Girişi***')
@@ -62,7 +62,7 @@ def target_encode(val):
 
 y = y_raw.apply(target_encode)
 
-with st.expander('Data preparation'):
+with st.expander('Veri Hazırlama'):
   st.write('**Encoded X (input penguin)**')
   input_row
   st.write('**Encoded y**')
