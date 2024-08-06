@@ -10,9 +10,9 @@ with st.expander('Data'):
   df
 
 st.write('**X**')
-X= df.drop('Tür', axis=1)
+X= df.drop('species', axis=1)
 X
 
 st.write('**Y**')
-Y= df.Tür
+Y= df.species
 Y
