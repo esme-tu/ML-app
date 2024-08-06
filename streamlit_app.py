@@ -19,3 +19,13 @@ with st.expander('Data'):
 with st.expander('Data Görselleştirme'):
   st.scatter_chart(data=df,x="bill_length_mm", y="body_mass_g", color='species')
 
+#data seçme
+with st.sidebar:
+  st.header('Özellik Girişi')
+  island = st.selectbox('Ada Seçimi',('Biscoe','Dream','Torgersen'))
+  gender= st.selectbox('Cinsiyet',('female','male')
+  bill_length_mm= st.slider('Gaga Uzunluğu (mm)', 32.1, 59.6, 43.9)
+  bill_depth_mm= st.slider('Gaga Genişliği (mm)', 13.1, 21.5, 17.2)
+  flipper_length_mm= st.slider('Yüzgeç Uzunluğu (mm)', 170.0, 231.0, 201.0)
+  body_mass_g= st.slider('Ağırlık (g)', 2700.0, 6300.0, 4207.0)
+
