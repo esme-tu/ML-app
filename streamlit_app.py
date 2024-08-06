@@ -47,7 +47,7 @@ with st.expander('Özellik Girişi'):
 
 # Data preparation
 # Encode X
-encode = ['Ada', 'Cinsiyet']
+encode = ['Ada Seçimi', 'Cinsiyet']
 df_penguins = pd.get_dummies(input_penguins, prefix=encode)
 
 X = df_penguins[1:]
