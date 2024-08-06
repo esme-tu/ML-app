@@ -52,7 +52,7 @@ with st.expander('Özellik Girişi'):
 # Data preparation
 # Encode X
 encode = ['island', 'sex']
-df_penguins = pd.get_dummies(input_penguins, columns=encode)
+df_penguins = pd.get_dummies(input_penguins, prefix=encode)
 
 X = df_penguins.iloc[1:, :]
 input_row = df_penguins.iloc[:1, :]
