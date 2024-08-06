@@ -23,7 +23,7 @@ with st.expander('Data Görselleştirme'):
 with st.sidebar:
   st.header('Özellik Girişi')
   island = st.selectbox('Ada Seçimi',('Biscoe','Dream','Torgersen'))
-  gender= st.selectbox('Cinsiyet',('female','male')
+  gender= st.selectbox('Cinsiyet',('female','male'))
   bill_length_mm= st.slider('Gaga Uzunluğu (mm)', 32.1, 59.6, 43.9)
   bill_depth_mm= st.slider('Gaga Genişliği (mm)', 13.1, 21.5, 17.2)
   flipper_length_mm= st.slider('Yüzgeç Uzunluğu (mm)', 170.0, 231.0, 201.0)
