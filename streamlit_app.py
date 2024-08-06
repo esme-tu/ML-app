@@ -28,4 +28,14 @@ with st.sidebar:
   bill_depth_mm= st.slider('Gaga Genişliği (mm)', 13.1, 21.5, 17.2)
   flipper_length_mm= st.slider('Yüzgeç Uzunluğu (mm)', 170.0, 231.0, 201.0)
   body_mass_g= st.slider('Ağırlık (g)', 2700.0, 6300.0, 4207.0)
+  
+  # girilen özelliğe göre veri oluştur
+  data={'Ada Seçimi', island,
+        'Gaga Uzunluğu (mm)', bill_length_mm,
+        'Gaga Genişliği (mm)', bill_depth_mm,
+        'Yüzgeç Uzunluğu (mm)', flipper_length_mm,
+        'Ağırlık (g)',body_mass_g,
+        'Cinsiyet',gender}
+  input_df= pd.DataFrame(data, index[0])
 
+input_df
